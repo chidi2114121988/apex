@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block header %} {% include 'header.html' %}{% endblock header %}
+{% block banner %} {% include 'banner.html' %}{% endblock banner %} 
+{% block content %}
+<div class="container mb-5 mt-5 signup" >
+  <h1 class="title text-center text-capitalize mb-4">register here</h1>
+  <div class="row">
+    <div class="col-md-12 signup">
+      <form action="{% url 'register' %}" method='POST'>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">username</label>
+          <input type="text" name='user_name' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">first name</label>
+          <input type="text" name='first_name' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">last name</label>
+          <input type="text" name='lastname' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">phone</label>
+          <input type="text" name='phone' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">address</label>
+          <input type="text" name='address' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <input type="hidden" name='pix' value='profilepix/avatar.png' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">email</label>
+          <input type="email" name='email' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>            
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">password</label>
+          <input type="password" name='password1' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>            
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confrim password</label>
+          <input type="password" name='password2' class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>            
+        <div class="mb-3">
+          <button  type='submit' class="btn btn-primary">register</button>
+        </div>
+          <p class="text-capitalize">already have an account</p><span> <a href="">login in here</a></span>
+      </form>
+    </div>
+  </div>
+</div>
+  
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}
+
+
+
+
+  
