@@ -221,7 +221,7 @@ def add_to_cart(request):
                 basket.quantity += quantity
                 basket.amount= basket.quantity * new_price
                 basket.save()
-                messages.success(request , 'one item addes to cart')
+                messages.success(request , 'one item added to cart')
                 return redirect('home')
             else:
                 newitem=Cart()
@@ -336,12 +336,12 @@ def checkout(request):
 def payment(request):
     if request.method == 'POST':
         profile = Customer.objects.get(user__username= request. user.username)
-        api_key ='sk_test_24ff1fdf97a14a0079fdb695db4bfbc574382086'#secret ket from paystact
+        api_key ='sk_test_24ff1fdf97a14a0079fdb695db4bfbc574382086'#secret ket from Paystack
         curl ='https://api.paystack.co/transaction/initialize'# paystack call url
         cburl ='http://16.170.220.123/callback '# callback or thank you page
         ref = str(uuid.uuid4()) # reference ID required by paystack as an additional ref number
         order_no = profile.id
-        amount = float(request.POST ['total'])* 100  #  totall amount to be charged
+        amount = float(request.POST ['total'])* 100  #  total amount to be charged
         email = profile.email
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -356,7 +356,7 @@ def payment(request):
         try:
             r=requests.post(curl, headers=headers, json=data)
         except Exception:
-            messages.error(request, "Networl busy, please try again")  
+            messages.error(request, "NetworK busy, please try again")  
         else:
             transback = json.loads(r.text)
             rdurl = transback['data'] ['authorization_url']   
